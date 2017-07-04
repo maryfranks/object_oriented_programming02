@@ -10,6 +10,10 @@ class Book
     return @@on_shelf.last
   end
 
+  def self.available
+    return @@on_shelf 
+  end
+
 # ======== Instance =========
 
   def initialize(title, author, isbn)
