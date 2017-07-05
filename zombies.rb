@@ -10,7 +10,7 @@ class Zombie
   @@default_strength = 3
 
   def self.all
-
+    return @@horde
   end
 
   def self.new_day
@@ -22,7 +22,13 @@ class Zombie
   end
 
   def self.spawn
-
+    speed = rand(@@max_speed)
+    strength = rand(@@max_strength)
+    more_zombies = rand(@@plague_level)
+    more_zombies.times do |zombie|
+      @@horde << Zombie.new(speed, strength)
+      return @@horde.last
+    end
   end
 
   def self.increase_plague_level
