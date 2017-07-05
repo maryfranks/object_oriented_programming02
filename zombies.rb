@@ -14,7 +14,9 @@ class Zombie
   end
 
   def self.new_day
-
+    some_die_off
+    spawn
+    increase_plague_level
   end
 
   def self.some_die_off
