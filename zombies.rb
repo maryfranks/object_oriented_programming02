@@ -1,4 +1,4 @@
-class Zombies
+class Zombie
 
 # ======== Class =========
 
@@ -31,8 +31,17 @@ class Zombies
 
 # ======== Instance =========
 
-  def initialize
-
+  def initialize(speed, strength)
+    if speed > @@max_speed
+      @speed = @@default_speed
+    else
+      @speed = speed
+    end
+    if strength > @@max_strength
+      @strength = @@default_strength
+    else
+      @strength = strength
+    end
   end
 
   def encounter
@@ -50,3 +59,4 @@ class Zombies
 end
 
 # ======== Testing =========
+zombie1 = Zombie.new(2, 3)
