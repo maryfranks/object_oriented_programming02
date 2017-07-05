@@ -1,3 +1,5 @@
+require 'pry'
+
 class Book
 
 # ======== Class =========
@@ -23,9 +25,14 @@ class Book
     available_books.sample
   end
 
-  def self.current_due_date
-    @due_date = Time.now + 604800
-    return @due_date
+  def self.overdue
+    overdue = []
+    @@borrowed.each do |book|
+      if @due_date > Time.now
+        overdue << book
+      end
+    end
+    return overdue 
   end
 
 # ======== Instance =========
@@ -54,6 +61,31 @@ class Book
     @due_date = Time.now + 604800
   end
 
+  def current_due_date
+    @due_date = Time.now + 604800
+    return @due_date
+  end
+
+  def borrow
+    if lent_out? == true
+      return false
+    else
+      current_due_date
+      @@on_loan << (self)
+      @@on_shelf.delete(self)
+      @borrowed = true
+    end
+  end
+
+  def return
+    if lent_out? == false
+      return false
+    else
+      @@on_loan.delete(self)
+      @@on_shelf << (self)
+      @borrowed = false
+    end
+  end
 
 end
 
@@ -65,4 +97,9 @@ book3 = Book.create("The Winter People", "Jennifer McMahon", 63748)
 book4 = Book.create("Cloud Atlas", "David Mitchell", 35472)
 
 
-puts Book.current_due_date
+# puts Book.current_due_date
+book1.borrow
+book2.borrow
+book1.return
+# @@on_shelf.inspect
+# @@on_loan.inspect
