@@ -34,7 +34,8 @@ class Zombie
   end
 
   def self.increase_plague_level
-
+    @@plague_level += rand(2)
+    return @@plague_level
   end
 
 # ======== Instance =========
