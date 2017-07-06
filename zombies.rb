@@ -57,16 +57,36 @@ class Zombie
     end
   end
 
+  def get_speed
+    return @speed
+  end
+
+  def get_strength
+    return @strength    
+  end
+
   def encounter
 
   end
 
   def outrun_zombie
-
+    speed = rand(@@max_speed)
+    zombie = @@horde.sample
+    if speed > zombie.get_speed
+      return true
+    else
+      return false
+    end
   end
 
   def survive_attack
-
+    strength = rand(@@max_strength)
+    zombie = @@horde.sample
+    if strength > zombie.get_strength
+      return true
+    else
+      return false
+    end
   end
 
 end
