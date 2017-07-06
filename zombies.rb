@@ -21,7 +21,7 @@ class Zombie
 
   def self.some_die_off
     remove_from_horde = rand(10)
-    remove_from_horde.times do |dead_zombie|
+    remove_from_horde.times do
       dead_zombie = @@horde.sample
       @@horde.delete(dead_zombie)
     end
@@ -31,7 +31,7 @@ class Zombie
     speed = rand(@@max_speed)
     strength = rand(@@max_strength)
     more_zombies = rand(@@plague_level)
-    more_zombies.times do |zombie|
+    more_zombies.times do
       @@horde << Zombie.new(speed, strength)
       return @@horde.last
     end
