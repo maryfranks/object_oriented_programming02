@@ -20,7 +20,11 @@ class Zombie
   end
 
   def self.some_die_off
-
+    remove_from_horde = rand(10)
+    remove_from_horde.times do |dead_zombie|
+      dead_zombie = @@horde.sample
+      @@horde.delete(dead_zombie)
+    end
   end
 
   def self.spawn
