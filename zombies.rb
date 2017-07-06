@@ -62,11 +62,22 @@ class Zombie
   end
 
   def get_strength
-    return @strength    
+    return @strength
   end
 
   def encounter
-
+    if outrun_zombie == true && survive_attack == true
+      # you survive
+      puts "You lived!"
+    elsif outrun_zombie == false && survive_attack == true
+      # you become a zombie
+      puts "You became a zombie!"
+      Zombie.spawn
+      # return @@horde.last
+    else
+      # you die
+      puts "You died!"
+    end
   end
 
   def outrun_zombie
