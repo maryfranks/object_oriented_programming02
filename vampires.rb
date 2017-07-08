@@ -1,3 +1,12 @@
 class Vampire
 
-end 
+# ======== Instance Methods ========
+
+  def initialize(name, age)
+    @@name              = name
+    @@age               = age
+    @@in_coffin         = false
+    @@drank_blood_today = false
+  end
+
+end
