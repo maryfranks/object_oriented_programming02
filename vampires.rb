@@ -31,6 +31,17 @@ class Vampire
     end
   end
 
+  def self.sunrise # removes if the vampire isn't in the coffin but
+                   # not if the vampire hasn't had any blood
+    @@coven.each do |vampire|
+      if vampire.drank_blood_today == false
+        @@coven.delete(vampire)
+      elsif vampire.in_coffin == false
+        @@coven.delete(vampire)
+      end
+    end
+  end
+
 # ==================== Instance Methods =====================
 
   def drink_blood
